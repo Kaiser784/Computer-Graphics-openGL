@@ -1,2 +1,2 @@
 # Computer-Graphics-openGL
-Collection of assignments from a Lab Course which uses out dated methods coz the curriculum and the professor were both ass
+Collection of assignments from a Lab Course which uses outdated methods coz the curriculum and the professor were both ass
