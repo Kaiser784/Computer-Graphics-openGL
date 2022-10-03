@@ -47,3 +47,13 @@ animations as you wish.)
 
 2. Use Mid-point Ellipse Drawing (MED) algorithm to draw the an elliptical arc (as show in the figure) with major axis length 2a and minor axis length 2b, starting angle α, sweeping angle β. Angles are taken in anti-clockwise direction. (-2л<=α<=2л and -2л<=β<=2л). Input to the algorithm are major, minor axis lengths, center of the arc, α and β in degrees. All the inputs should be random. Everytime you click the mouse/enter a key, a new elliptical arc will be generated.
 ```
+
+### 0926 - Clipping Algorithms
+```
+1. Point Clipping: Given n random 2D points (x_i, y_i), for 1<=i<=n, and a clipping rectangle with diagonal vertices, (X_min, Y_min) and (X_max, Y_max), display (in red) the points that are inside the rectangle.
+
+2. Line Clipping: Given n random lines segments with end points (x_i, y_i) for 1<=i<=n, and a clipping rectangle with diagonal vertices, (X_min, Y_min) and
+(X_max, Y_max), display(in green) the portions of the line segments that are inside the rectangle, using 
+  a. Cohen-Sutherland Line Clipping Algorithm [Complete in this lab]
+  b. Liang-Barsky Line Clipping Algorithm [Complete by next lab]
+```
