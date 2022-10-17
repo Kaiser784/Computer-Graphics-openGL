@@ -57,3 +57,16 @@ animations as you wish.)
   a. Cohen-Sutherland Line Clipping Algorithm [Complete in this lab]
   b. Liang-Barsky Line Clipping Algorithm [Complete by next lab]
 ```
+
+### 1017 - Polygon Clipping
+```
+1. Inside-Outside test: Given a point P and a polygon window W , check if P lies inside W
+2. Polygon Clipping:
+  a. Sutherland-Hodgman Algorithm:
+    i. Input: Vertex sequence P_1, P_2.....P_N representing polygon to be clipped, and another vertex sequence Q_1 , ...Q_M representing convex polygon
+    ii. Output: The sequence of vertices of clipped polygon
+    iii. Draw the clipped polygon
+    iv. Try for single and multiple components of the polygon
+  b. Weiler-Atherton algorithm: [not for this lab, submit it by next lab after the theory is taught in the class]
+    i. Fix the issue of multiple components  
+```
