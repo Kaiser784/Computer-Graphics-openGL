@@ -59,10 +59,13 @@ void display()
     float xp[n];
     float yp[n];
 
+    float cx = rand()%700;
+    float cy = rand()%700;
+
     for(int i = 0; i < n; i++)
     {
-        xp[i] = 700+r*cos((theta*i)*PI/180);
-        yp[i] = 300+r*sin((theta*i)*PI/180);
+        xp[i] = cx +r*cos((theta*i)*PI/180);
+        yp[i] = cy +r*sin((theta*i)*PI/180);
     }
 
     glColor3f(0, 1, 0);
