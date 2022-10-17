@@ -29,9 +29,51 @@ void display()
     int xx, yx;
     glClear(GL_COLOR_BUFFER_BIT);
     glPointSize(3);
-    glColor3f(0, 1, 0);
 
-    
+    //Polygon Window
+    int n = rand()%10+3;
+    int theta = 360/n;
+    int r = 250;
+
+    float xpc[n];
+    float ypc[n];
+
+    for(int i = 0; i < n; i++)
+    {
+        xpc[i] = 500+r*cos((theta*i)*PI/180);
+        ypc[i] = 500+r*sin((theta*i)*PI/180);
+    }
+
+    glColor3f(0, 1, 0);
+    glBegin(GL_LINE_LOOP);
+    for(int i = n-1; i >= 0; i--)
+    { 
+        glVertex2d(xpc[i], ypc[i]);
+    }
+    glEnd();
+
+    n = rand()%10+3;
+    theta = 360/n;
+    r = 250;
+
+    float xp[n];
+    float yp[n];
+
+    for(int i = 0; i < n; i++)
+    {
+        xp[i] = 700+r*cos((theta*i)*PI/180);
+        yp[i] = 300+r*sin((theta*i)*PI/180);
+    }
+
+    glColor3f(0, 1, 0);
+    glBegin(GL_LINE_LOOP);
+    for(int i = n-1; i >= 0; i--)
+    { 
+        glVertex2d(xp[i], yp[i]);
+    }
+    glEnd();
+
+
 
 
 
