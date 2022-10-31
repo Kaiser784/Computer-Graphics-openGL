@@ -6,9 +6,6 @@ using namespace std;
 #include "string.h"
 #define PI 3.14159265f
 
-float xmin = 300, ymin = 300, xmax = 900, ymax = 600;
-float xtop = 600, ytop = 750;
-
 
 void myinit(void)
 {

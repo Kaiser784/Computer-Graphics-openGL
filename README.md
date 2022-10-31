@@ -70,3 +70,10 @@ animations as you wish.)
   b. Weiler-Atherton algorithm: [not for this lab, submit it by next lab after the theory is taught in the class]
     i. Fix the issue of multiple components  
 ```
+
+### 1031 - Boundary filling
+```
+1. Region Filling Algorithms: Implement the following
+  a. Boundary-Fill Algorithm: Both recursive and non-recursive algorithms
+  b. Flood-Fill Algorithm: Both recursive and non-recursive algorithms
+```
