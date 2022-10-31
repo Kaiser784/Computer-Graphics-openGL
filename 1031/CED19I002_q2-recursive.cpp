@@ -13,11 +13,11 @@ float newColor[3] = {0.0,0.0,1.0};
 
 void setPixel(int xx, int yx, float pixel[3])   
 {   
-     glBegin(GL_POINTS);   
-          glColor3fv(pixel);   
-          glVertex2i(xx,yx);   
-     glEnd();   
-     glFlush();   
+    glBegin(GL_POINTS);   
+        glColor3fv(pixel);   
+        glVertex2i(xx,yx);   
+    glEnd();   
+    glFlush();   
 }   
 
 void getPixel(int x, int y, float pixels[3])   

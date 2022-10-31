@@ -13,11 +13,11 @@ float boundColor[3] = {1.0,1.0,1.0};
 
 void setPixel(int xx, int yx, float pixel[3])   
 {   
-     glBegin(GL_POINTS);   
-          glColor3fv(pixel);   
-          glVertex2i(xx,yx);   
-     glEnd();   
-     glFlush();   
+    glBegin(GL_POINTS);   
+        glColor3fv(pixel);   
+        glVertex2i(xx,yx);   
+    glEnd();   
+    glFlush();   
 }   
 
 void getPixel(int x, int y, float pixels[3])   
@@ -40,14 +40,14 @@ void boundaryFill4(int x,int y,float fillColor[3],float boundColor[3])
 } 
 void drawPolygon(int x1, int y1, int x2, int y2)   
 {      
-     glColor3f(1.0, 1.0, 1.0);   
-     glBegin(GL_LINE_LOOP);   
-        glVertex2i(x1, y1);    
-        glVertex2i(x1, y2);   
-        glVertex2i(x2, y2);   
-        glVertex2i(x2, y1);      
-     glEnd();   
-     glFlush();   
+    glColor3f(1.0, 1.0, 1.0);   
+    glBegin(GL_LINE_LOOP);   
+    glVertex2i(x1, y1);    
+    glVertex2i(x1, y2);   
+    glVertex2i(x2, y2);   
+    glVertex2i(x2, y1);      
+    glEnd();   
+    glFlush();   
 }   
 void display()   
 {   
