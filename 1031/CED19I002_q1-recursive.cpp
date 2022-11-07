@@ -70,7 +70,7 @@ int main(int argc, char** argv)
 {   
     glutInit(&argc,argv);   
     glutInitWindowSize(width,height);   
-    glutCreateWindow("Flood-Fill-Recursive");   
+    glutCreateWindow("Boundary-Fill-Recursive");   
     glutDisplayFunc(display);   
     myinit();     
     glutMainLoop();   
