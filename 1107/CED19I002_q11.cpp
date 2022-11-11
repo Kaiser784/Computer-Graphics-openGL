@@ -28,6 +28,40 @@ void brute(int x, int y, float* fill, float* bound)
     }
 }
 
+void draw_polygon()
+{
+    int vertices;
+    int xi,yi;
+
+    printf("Enter no of vertices: ");
+    cin >> vertices;
+    printf("Enter in anti-clockwise order\n");
+    
+    glColor3f(0,0,1);
+    glBegin(GL_LINE_LOOP);
+    for(int i=0; i < vertices; i++)
+    {
+        printf("Enter xi:");
+        cin >> xi;
+        printf("Enter yi:");
+        cin >> yi;
+        printf("\n");
+        glVertex2i(xi,yi);
+    }
+    glEnd();
+
+}
+
+void display()   
+{   
+    glClearColor(0, 0, 0, 1);   
+    glClear(GL_COLOR_BUFFER_BIT); 
+
+    draw_polygon();
+    
+    glFlush();   
+} 
+
 void mouse(int btn, int state, int x, int y){
     y = height-y;
     if(btn==GLUT_LEFT_BUTTON)
@@ -41,34 +75,6 @@ void mouse(int btn, int state, int x, int y){
     }
 }
 
-void display()   
-{   
-    glClearColor(0, 0, 0, 1);   
-    glClear(GL_COLOR_BUFFER_BIT);  
-    glColor3f(0,0,1);
-
-    int vertices;
-    int xi,yi;
-
-    printf("Enter no of vertices: ");
-    cin >> vertices;
-    printf("Enter in anti-clockwise order\n");
-
-    glBegin(GL_LINE_LOOP);
-    for(int i=0; i < vertices; i++)
-    {
-        printf("Enter xi:");
-        cin >> xi;
-        printf("Enter yi:");
-        cin >> yi;
-        printf("\n");
-        glVertex2i(xi,yi);
-    }
-    glEnd();
-
-    glFlush();   
-} 
-
 void myinit()   
 {      
     glViewport(0,0,width,height);   
@@ -80,11 +86,15 @@ void myinit()
 int main(int argc, char** argv)   
 {   
     glutInit(&argc,argv);   
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(width,height);   
+    glutInitWindowPosition(100, 100);
     glutCreateWindow("Brute-Boundary-Fill");   
+    
+    myinit();     
     glutDisplayFunc(display);  
     glutMouseFunc(mouse); 
-    myinit();     
+    
     glutMainLoop();   
     return 0;   
 }   
