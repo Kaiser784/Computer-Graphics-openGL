@@ -1,100 +1,86 @@
-#include <GL/glut.h>
-#include<unistd.h>
 #include <bits/stdc++.h>
-#include <iostream>
+#include <time.h>
+#include <GL/glut.h>
+
 using namespace std;
-#include "math.h"
-#include "string.h"
-#define PI 3.14159265f  
 
-int width = 800, height = 500;     
+void delay(float ms){
+    clock_t goal = ms + clock();
+    while(goal>clock());
+}
 
-void brute(int x, int y, float* fill, float* bound)
-{
+void init(){
+    glClearColor(1.0,1.0,1.0,0.0);
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0,640,0,480);
+}
+
+void bound_it(int x, int y, float* fillColor, float* bc){
     float color[3];
-    glReadPixels(x,y,1,1,GL_RGB,GL_FLOAT,color);
-    if((color[0]!=bound[0] || color[1]!=bound[1] || color[2]!=bound[2]) && (color[0]!=fill[0] || color[1]!=fill[1] || color[2]!=fill[2]))
-    {
-        glColor3f(fill[0], fill[1], fill[2]);
+    glReadPixels(x,y,1.0,1.0,GL_RGB,GL_FLOAT,color);
+    if((color[0]!=bc[0] || color[1]!=bc[1] || color[2]!=bc[2])&&(
+     color[0]!=fillColor[0] || color[1]!=fillColor[1] || color[2]!=fillColor[2])){
+        glColor3f(fillColor[0],fillColor[1],fillColor[2]);
         glBegin(GL_POINTS);
             glVertex2i(x,y);
         glEnd();
         glFlush();
-
-        brute(x+1,y,fill,bound);
-        brute(x-1,y,fill,bound);
-        brute(x,y+1,fill,bound);
-        brute(x,y-1,fill,bound);
+        bound_it(x+1,y,fillColor,bc);
+        bound_it(x-2,y,fillColor,bc);
+        bound_it(x,y+2,fillColor,bc);
+        bound_it(x,y-2,fillColor,bc);
     }
 }
-
-void draw_polygon()
-{
-    int vertices;
-    int xi,yi;
-
-    printf("Enter no of vertices: ");
-    cin >> vertices;
-    printf("Enter in anti-clockwise order\n");
-    
-    glColor3f(0,0,1);
-    glBegin(GL_LINE_LOOP);
-    for(int i=0; i < vertices; i++)
-    {
-        printf("Enter xi:");
-        cin >> xi;
-        printf("Enter yi:");
-        cin >> yi;
-        printf("\n");
-        glVertex2i(xi,yi);
-    }
-    glEnd();
-
-}
-
-void display()   
-{   
-    glClearColor(0, 0, 0, 1);   
-    glClear(GL_COLOR_BUFFER_BIT); 
-
-    draw_polygon();
-    
-    glFlush();   
-} 
 
 void mouse(int btn, int state, int x, int y){
-    y = height-y;
+    y = 480-y;
     if(btn==GLUT_LEFT_BUTTON)
     {
         if(state==GLUT_DOWN)
         {
-            float bound[] = {0,0,1};
-            float fill[] = {1,1,1};
-            brute(x,y,fill,bound);
+            float bCol[] = {1,0,0};
+            float color[] = {0,0,1};
+            //glReadPixels(x,y,1.0,1.0,GL_RGB,GL_FLOAT,intCol);
+            bound_it(x,y,color,bCol);
         }
     }
 }
 
-void myinit()   
-{      
-    glViewport(0,0,width,height);   
-    glMatrixMode(GL_PROJECTION);   
-    glLoadIdentity();   
-    gluOrtho2D(0.0,(GLdouble)width,0.0,(GLdouble)height);   
-    glMatrixMode(GL_MODELVIEW);   
-}   
-int main(int argc, char** argv)   
-{   
-    glutInit(&argc,argv);   
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(width,height);   
-    glutInitWindowPosition(100, 100);
-    glutCreateWindow("Brute-Boundary-Fill");   
+void world(){
+
+int xi, yi, ni,i;
+    glLineWidth(3);
+    glPointSize(2);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(1,0,0);
     
-    myinit();     
-    glutDisplayFunc(display);  
-    glutMouseFunc(mouse); 
+    printf("enter the number of vertices for the polygon: ");
+    cin >> ni;
     
-    glutMainLoop();   
-    return 0;   
-}   
+    glBegin(GL_LINE_LOOP);
+    
+    for(i=0;i<ni;i++)
+    {
+        printf("\nEnter the xi: ");
+        cin >> xi;
+        printf("\nEnter the yi: ");
+        cin >> yi;
+        glVertex2i(xi,yi);
+        printf("\n");
+    }
+    glEnd();
+    glFlush();
+}
+
+int main(int argc, char** argv){
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+    glutInitWindowSize(640,480);
+    glutInitWindowPosition(200,200);
+    glutCreateWindow("BOUNDARY POLYFILL FOR RANDOM INPUT");
+    glutDisplayFunc(world);
+    glutMouseFunc(mouse);
+    init();
+    glutMainLoop();
+    return 0;
+}
