@@ -77,3 +77,10 @@ animations as you wish.)
   a. Boundary-Fill Algorithm: Both recursive and non-recursive algorithms
   b. Flood-Fill Algorithm: Both recursive and non-recursive algorithms
 ```
+
+### 1107 - Polygon Filling
+```
+1. Region Filling Algorithms: Implement the following
+  a. Brute-Force method using Boundary Fill Algorithm (on random inputs)
+  b. Scanline Polyfill Algorithm on random inputs
+```
